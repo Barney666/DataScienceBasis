@@ -1,0 +1,433 @@
+syntax = "proto3";
+
+message Video {
+    int32 status_code = 1;
+    int64 min_cursor = 2;
+    int64 max_cursor = 3;
+    int32 has_more = 4;
+    repeated Aweme aweme_list = 5;
+    message extra {
+        int64 now = 1;
+        string logid = 2;
+        //不知道这个是啥 数据中都是null 有个ids 怀疑是列表
+        repeated int32 fatal_item_ids = 3;
+    }
+    message log_pb{
+        string impr_id = 1;
+    }
+}
+
+
+message Aweme {
+    string aweme_id = 1;
+    string desc = 2;
+    int64 create_time = 3;
+    message author{
+        string uid = 1;
+        string short_id = 2;
+        string nickname = 3;
+        string signature = 4;
+        Avatar avatar_larger = 5;
+        Avatar avatar_thumb = 6;
+        Avatar avatar_medium = 7;
+        bool is_verified = 8;
+        int32 follow_status = 9;
+        bool is_block = 10;
+        string location = 11;
+        bool hide_location = 12;
+        string custom_verify = 13;
+        string unique_id = 14;
+        int32 story_count = 15;
+        int32 room_id = 16;
+        int32 authority_status = 17;
+        string verify_info = 18;
+        message share_info{
+            string share_url = 1;
+            string share_weibo_desc = 2;
+            string share_desc = 3;
+            string share_title = 4;
+            Avatar share_qrcode_url = 5;
+            string share_title_myself = 6;
+            string share_title_other = 7;
+        }
+        bool with_commerce_entry = 19;
+        int32 verification_type = 20;
+        message original_musician{
+            int32 music_count = 1;
+            int32 music_used_count = 2;
+            int32 digg_count = 3;
+        }
+        string enterprise_verify_reason = 21;
+        bool is_ad_fake = 22;
+        //不知道是不是string
+        string followers_detail = 23;
+        string region = 24;
+        int32 sync_to_toutiao = 25;
+        int32 commerce_user_level = 26;
+        bool is_discipline_member = 27;
+        int32 secret = 28;
+        Avatar video_icon = 29;
+        bool is_gov_media_vip = 30;
+        int32 follower_status = 31;
+        repeated Avatar cover_url = 32;
+        string language = 33;
+        bool has_unread_story = 34;
+        bool is_star = 35;
+        //不知道是不是string
+        string ad_cover_url = 36;
+        Avatar avatar_168x168 = 37;
+        Avatar avatar_300x300 = 38;
+        //不知道是不是string
+        repeated string relative_users = 39;
+        //不知道是不是string
+        repeated string cha_list = 40;
+        string sec_uid = 41;
+        bool prevent_download = 42;
+        int32 comment_setting = 43;
+        int32 duet_setting = 44;
+        int32 download_setting = 45;
+        int32 comment_filter_status = 46;
+    }
+    message music{
+        int64 id = 1;
+        string id_str = 2;
+        string title = 3;
+        string author = 4;
+        string album = 5;
+        Avatar cover_hd = 6;
+        Avatar cover_large = 7;
+        Avatar cover_medium = 8;
+        Avatar cover_thumb = 9;
+        Avatar play_url = 10;
+        string schema_url = 11;
+        int32 source_platform = 12;
+        int32 start_time = 13;
+        int32 end_time = 14;
+        int32 duration = 15;
+        string extra = 16;
+        int32 user_count = 17;
+        //不知道是不是string
+        string position = 18;
+        int32 collect_stat = 19;
+        int32 status = 20;
+        string offline_desc = 21;
+        string owner_id = 22;
+        string owner_nickname = 23;
+        bool is_original = 24;
+        string mid = 25;
+        int32 binded_challenge_id = 26;
+        bool redirect = 27;
+        bool is_restricted = 28;
+        bool author_deleted = 29;
+        bool is_del_video = 30;
+        bool is_video_self_see = 31;
+        string owner_handle = 32;
+        //不知道是不是string
+        string author_position = 33;
+        bool prevent_download = 34;
+        //不知道是不是string
+        repeated string unshelve_countries = 35;
+        int32 prevent_item_download_status = 36;
+        //不知道是不是string
+        repeated string external_song_info = 37;
+        string sec_uid = 38;
+        Avatar avatar_thumb = 39;
+        Avatar avatar_medium = 40;
+        Avatar avatar_large = 41;
+        int32 preview_start_time = 42;
+        int32 preview_end_time = 43;
+        bool is_commerce_music = 44;
+        bool is_original_sound = 45;
+        int32 audition_duration = 46;
+        int32 shoot_duration = 47;
+        int32 reason_type = 48;
+        //不知道是不是string
+        repeated string artists = 49;
+        string lyric_short_position = 50;
+        bool mute_share = 51;
+        //不知道是不是string
+        repeated string tag_list = 52;
+        bool dmv_auto_show = 53;
+        bool is_pgc = 54;
+        bool is_matched_metadata = 55;
+        bool is_audio_url_with_cookie = 56;
+    }
+    repeated Cha cha_list = 4;
+    message video{
+        Play_key play_addr = 1;
+        Avatar cover = 2;
+        int32 height = 3;
+        int32 width = 4;
+        Avatar dynamic_cover = 5;
+        Avatar origin_cover = 6;
+        string ratio = 7;
+        message download_addr{
+            string uri = 1;
+            repeated string url_list = 2;
+            int32 width = 3;
+            int32 height = 4;
+            int64 data_size = 5;
+        }
+        bool has_watermark = 8;
+        Play_key play_addr_lowbr = 9;
+        repeated Bit bit_rate = 10;
+        int32 duration = 11;
+        message download_suffix_logo_addr{
+            string uri = 1;
+            repeated string url_list = 2;
+            int32 width = 3;
+            int32 height = 4;
+            int64 data_size = 5;
+        }
+        bool has_download_suffix_logo_addr = 12;
+        Play_key play_addr_265 = 13;
+        int32 is_h265 = 14;
+        Play_key play_addr_h264 = 15;
+        int64 cdn_url_expired = 16;
+        message animated_cover{
+            string uri = 1;
+            repeated string url_list = 2;
+        }
+        bool need_set_token = 17;
+        bool is_callback = 18;
+    }
+    string share_url = 5;
+    int32 user_digged = 6;
+    message statistics{
+        string aweme_id = 1;
+        int32 comment_count = 2;
+        int32 digg_count = 3;
+        int32 download_count = 4;
+        int32 play_count = 5;
+        int32 share_count = 6;
+        int32 forward_count = 7;
+        int32 lose_count = 8;
+        int32 lose_comment_count = 9;
+        int32 whatsapp_share_count = 10;
+    }
+    message status{
+        string aweme_id = 1;
+        bool is_delete = 2;
+        bool allow_share = 3;
+        bool allow_comment = 4;
+        bool is_private = 5;
+        bool with_goods = 6;
+        int32 private_status = 7;
+        bool with_fusion_goods = 8;
+        bool in_reviewing = 9;
+        int32 reviewed = 10;
+        bool self_see = 11;
+        bool is_prohibited = 12;
+        int32 download_status = 13;
+        message review_result{
+            int32 review_status = 1;
+        }
+        int32 dont_share_status = 14;
+        int32 video_hide_search = 15;
+    }
+    int32 rate = 7;
+    repeated Text text_extra = 8;
+    int32 is_top = 9;
+    Avatar label_top = 10;
+    message share_info{
+        string share_url = 1;
+        string share_weibo_desc = 2;
+        string share_desc = 3;
+        string share_title = 4;
+        int32 bool_persist = 5;
+        string share_title_myself = 6;
+        string share_title_other = 7;
+        string share_link_desc = 8;
+        string share_signature_url = 9;
+        string share_signature_desc = 10;
+        string share_quote = 11;
+    }
+    string distance = 11;
+    //不知道是不是string
+    repeated string video_labels = 12;
+    bool is_vr = 13;
+    bool is_ads = 14;
+    int32 duration = 15;
+    int32 aweme_type = 16;
+    bool is_fantasy = 17;
+    bool cmt_swt = 18;
+    repeated string image_infos = 19;
+    message risk_infos{
+        bool vote = 1;
+        bool warn = 2;
+        bool risk_sink = 3;
+        int32 type = 4;
+        string content = 5;
+    }
+    bool is_relieve = 20;
+    string sort_label = 21;
+    string position = 22;
+    string uniqid_position = 23;
+    repeated string comment_list = 24;
+    int64 author_user_id = 25;
+    int32 bodydance_score = 26;
+    //不知道是不是string
+    repeated string geofencing = 27;
+    int32 is_hash_tag = 28;
+    bool is_pgcshow = 29;
+    string region = 30;
+    repeated string video_text = 31;
+    int32 vr_type = 32;
+    int32 collect_stat = 33;
+    string label_top_text = 34;
+    //不知道是不是string
+    repeated string promotions = 35;
+    string group_id = 36;
+    bool prevent_download = 37;
+    string nickname_position = 38;
+    string challenge_position = 39;
+    string item_comment_settings = 40;
+    message descendants{
+        repeated string platforms = 1;
+        string notify_msg = 2;
+    }
+    bool with_promotional_music = 41;
+    message xigua_task{
+        bool is_xigua_task = 1;
+    }
+    //不知道是不是string
+    string long_video = 42;
+    int32 item_duet = 43;
+    int32 item_react = 44;
+    bool without_watermark = 45;
+    string desc_language = 46;
+    //不知道是不是string
+    repeated string interaction_stickers = 47;
+    int32 ad_link_type = 48;
+    string misc_info = 49;
+    //不知道是不是int
+    repeated int32 origin_comment_ids = 50;
+    //不知道是不是string
+    repeated string commerce_config_data = 51;
+    int32 distribute_type = 52;
+    message video_control{
+        bool allow_download = 1;
+        int32 share_type = 2;
+        int32 show_progress_bar = 3;
+        int32 draft_progress_bar = 4;
+        bool allow_duet = 5;
+        bool allow_react = 6;
+        int32 prevent_download_type = 7;
+        bool allow_dynamic_wallpaper = 8;
+        int32 timer_status = 9;
+        bool allow_music = 10;
+    }
+    message aweme_control{
+        bool can_forward = 1;
+        bool can_share = 2;
+        bool can_comment = 3;
+        bool can_show_comment = 4;
+    }
+    bool has_vs_entry = 53;
+    repeated string commerce_info = 54;
+    bool need_vs_entry = 55;
+    int32 is_preview = 56;
+    //不知道是不是string
+    repeated string anchors = 57;
+    //不知道是不是string
+    repeated string hybrid_label = 58;
+    //不知道是不是string
+    repeated string geofencing_regions = 59;
+    bool have_dashboard = 60;
+    message poi_patch_info{
+        int32 item_patch_poi_prompt_mark = 1;
+    }
+}
+
+message Avatar{
+    string uri = 1;
+    repeated string url_list = 2;
+    int32 width = 3;
+    int32 height = 4;
+}
+message Play{
+    string uri = 1;
+    repeated string url_list = 2;
+    int32 width = 3;
+    int32 height = 4;
+    int64 data_size = 5;
+    string file_cs = 6;
+}
+message Play_key{
+    string uri = 1;
+    repeated string url_list = 2;
+    int32 width = 3;
+    int32 height = 4;
+    string url_key = 5;
+    int64 data_size = 6;
+    string file_cs = 7;
+}
+
+message Bit{
+    string gear_name = 1;
+    int32 quality_type = 2;
+    int64 bit_rate = 3;
+    Play_key play_addr = 4;
+    int32 is_h265 = 5;
+    Play_key play_addr_265 = 6;
+}
+
+message Text{
+    int32 start = 1;
+    int32 end = 2;
+    int32 type = 3;
+    string hashtag_name = 4;
+    string hashtag_id = 5;
+    bool is_commerce = 6;
+}
+
+message Cha{
+    string cid = 1;
+    string cha_name = 2;
+    string desc = 3;
+    string schema = 4;
+    //里面属性全是null 只能瞎猜
+    message author{
+        string followers_detail = 1;
+        string platform_sync_info = 2;
+        string geofencing = 3;
+        string cover_url = 4;
+        string item_list = 5;
+        string new_story_cover = 6;
+        string type_label = 7;
+        string ad_cover_url = 8;
+        repeated string relative_users = 9;
+        repeated string cha_list = 10;
+        repeated string need_points = 11;
+        string homepage_bottom_toast = 12;
+        string can_set_geofencing = 13;
+        string white_cover_url = 14;
+    }
+    int32 user_count = 5;
+    message share_info{
+        string share_url = 1;
+        string share_weibo_desc = 2;
+        string share_desc = 3;
+        string share_title = 4;
+        int32 bool_persist = 5;
+        string share_title_myself = 6;
+        string share_title_other = 7;
+        string share_signature_url = 8;
+        string share_signature_desc = 9;
+        string share_quote = 10;
+    }
+    repeated string connect_music = 6;
+    int32 type = 7;
+    int32 sub_type = 8;
+    bool is_pgcshow = 9;
+    int32 collect_stat = 10;
+    int32 is_challenge = 11;
+    int32 view_count = 12;
+    bool is_commerce = 13;
+    string hashtag_profile = 14;
+    repeated string cha_attrs = 15;
+    repeated string banner_list = 16;
+    message extra_attr{
+        bool is_live = 1;
+    }
+}

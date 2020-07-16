@@ -1,0 +1,6 @@
+venv
+Code
+music/original/
+music/wav/
+music/mfcc_backup/
+.DS_Store
