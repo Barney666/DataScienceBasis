@@ -11,7 +11,8 @@ from scipy.fftpack import dct
 def calcMFCC_delta_delta(signal, samplerate=16000, win_length=0.025, win_step=0.01, cep_num=13, filters_num=26,
                          NFFT=512, low_freq=0, high_freq=None, pre_emphasis_coeff=0.97, cep_lifter=22,
                          appendEnergy=True):
-    '''计算13个MFCC+13个一阶微分系数+13个加速系数,一共39个系数
+    '''
+    计算13个MFCC+13个一阶微分系数+13个加速系数,一共39个系数
     '''
     feat = calcMFCC(signal, samplerate, win_length, win_step, cep_num, filters_num, NFFT, low_freq, high_freq,
                     pre_emphasis_coeff, cep_lifter, appendEnergy)  # 首先获取13个一般MFCC系数
@@ -24,7 +25,8 @@ def calcMFCC_delta_delta(signal, samplerate=16000, win_length=0.025, win_step=0.
 
 def calcMFCC_delta(signal, samplerate=16000, win_length=0.025, win_step=0.01, cep_num=13, filters_num=26, NFFT=512,
                    low_freq=0, high_freq=None, pre_emphasis_coeff=0.97, cep_lifter=22, appendEnergy=True):
-    '''计算13个MFCC+13个一阶微分系数
+    '''
+    计算13个MFCC+13个一阶微分系数
     '''
     feat = calcMFCC(signal, samplerate, win_length, win_step, cep_num, filters_num, NFFT, low_freq, high_freq,
                     pre_emphasis_coeff, cep_lifter, appendEnergy)  # 首先获取13个一般MFCC系数
@@ -34,7 +36,8 @@ def calcMFCC_delta(signal, samplerate=16000, win_length=0.025, win_step=0.01, ce
 
 
 def derivate(feat, big_theta=2, cep_num=13):
-    '''计算一阶系数或者加速系数的一般变换公式
+    '''
+    计算一阶系数或者加速系数的一般变换公式
     参数说明:
     feat:MFCC数组或者一阶系数数组
     big_theta:公式中的大theta，默认取2
@@ -72,7 +75,8 @@ def derivate(feat, big_theta=2, cep_num=13):
 
 def calcMFCC(signal, samplerate=16000, win_length=0.025, win_step=0.01, cep_num=13, filters_num=26, NFFT=512,
              low_freq=0, high_freq=None, pre_emphasis_coeff=0.97, cep_lifter=22, appendEnergy=True):
-    '''计算13个MFCC系数
+    '''
+    计算13个MFCC系数
     参数含义：
     signal:原始音频信号，一般为.wav格式文件
     samplerate:抽样频率，这里默认为16KHz
@@ -100,7 +104,8 @@ def calcMFCC(signal, samplerate=16000, win_length=0.025, win_step=0.01, cep_num=
 
 def fbank(signal, samplerate=16000, win_length=0.025, win_step=0.01, filters_num=26, NFFT=512, low_freq=0,
           high_freq=None, pre_emphasis_coeff=0.97):
-    '''计算音频信号的MFCC
+    '''
+    计算音频信号的MFCC
     参数说明：
     samplerate:采样频率
     win_length:窗长度
@@ -126,7 +131,8 @@ def fbank(signal, samplerate=16000, win_length=0.025, win_step=0.01, filters_num
 
 def log_fbank(signal, samplerate=16000, win_length=0.025, win_step=0.01, filters_num=26, NFFT=512, low_freq=0,
               high_freq=None, pre_emphasis_coeff=0.97):
-    '''计算对数值
+    '''
+    计算对数值
     参数含义：同上
     '''
     feat, energy = fbank(signal, samplerate, win_length, win_step, filters_num, NFFT, low_freq, high_freq,
@@ -151,7 +157,8 @@ def ssc(signal, samplerate=16000, win_length=0.025, win_step=0.01, filters_num=2
 
 
 def hz2mel(hz):
-    '''把频率hz转化为梅尔频率
+    '''
+    把频率hz转化为梅尔频率
     参数说明：
     hz:频率
     '''
@@ -159,7 +166,8 @@ def hz2mel(hz):
 
 
 def mel2hz(mel):
-    '''把梅尔频率转化为hz
+    '''
+    把梅尔频率转化为hz
     参数说明：
     mel:梅尔频率
     '''
@@ -167,7 +175,8 @@ def mel2hz(mel):
 
 
 def get_filter_banks(filters_num=20, NFFT=512, samplerate=16000, low_freq=0, high_freq=None):
-    '''计算梅尔三角间距滤波器，该滤波器在第一个频率和第三个频率处为0，在第二个频率处为1
+    '''
+    计算梅尔三角间距滤波器，该滤波器在第一个频率和第三个频率处为0，在第二个频率处为1
     参数说明：
     filers_num:滤波器个数
     NFFT:FFT大小
@@ -195,7 +204,8 @@ def get_filter_banks(filters_num=20, NFFT=512, samplerate=16000, low_freq=0, hig
 
 
 def lifter(cepstra, L=22):
-    '''升倒谱函数
+    '''
+    升倒谱函数
     参数说明：
     cepstra:MFCC系数
     L：升系数，默认为22

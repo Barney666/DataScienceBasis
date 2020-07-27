@@ -1,6 +1,6 @@
 # coding=utf-8
 # 对音频信号处理程序
-# 本程序主要有四个函数，它们分别是：
+# 本程序主要有六个函数，它们分别是：
 #    audio2frame:将音频转换成帧矩阵
 #    deframesignal:对每一帧做一个消除关联的变换
 #    spectrum_magnitude:计算每一帧傅立叶变换以后的幅度
@@ -12,7 +12,8 @@ import math
 
 
 def audio2frame(signal, frame_length, frame_step, winfunc=lambda x: numpy.ones((x,))):
-    '''将音频信号转化为帧。
+    '''
+    将音频信号转化为帧。
 	参数含义：
 	signal:原始音频型号
 	frame_length:每一帧的长度(这里指采样点的长度，即采样频率乘以时间间隔)
@@ -39,7 +40,8 @@ def audio2frame(signal, frame_length, frame_step, winfunc=lambda x: numpy.ones((
 
 
 def deframesignal(frames, signal_length, frame_length, frame_step, winfunc=lambda x: numpy.ones((x,))):
-    '''定义函数对原信号的每一帧进行变换，应该是为了消除关联性
+    '''
+    定义函数对原信号的每一帧进行变换，应该是为了消除关联性
     参数定义：
     frames:audio2frame函数返回的帧矩阵
     signal_length:信号长度
@@ -70,7 +72,8 @@ def deframesignal(frames, signal_length, frame_length, frame_step, winfunc=lambd
 
 
 def spectrum_magnitude(frames, NFFT):
-    '''计算每一帧经过FFY变幻以后的频谱的幅度，若frames的大小为N*L,则返回矩阵的大小为N*NFFT
+    '''
+    计算每一帧经过FFY变换以后的频谱的幅度，若frames的大小为N*L,则返回矩阵的大小为N*NFFT
     参数说明：
     frames:即audio2frame函数中的返回值矩阵，帧矩阵
     NFFT:FFT变换的数组大小,如果帧长度小于NFFT，则帧的其余部分用0填充铺满
@@ -80,7 +83,8 @@ def spectrum_magnitude(frames, NFFT):
 
 
 def spectrum_power(frames, NFFT):
-    '''计算每一帧傅立叶变换以后的功率谱
+    '''
+    计算每一帧傅立叶变换以后的功率谱
     参数说明：
     frames:audio2frame函数计算出来的帧矩阵
     NFFT:FFT的大小
@@ -89,7 +93,8 @@ def spectrum_power(frames, NFFT):
 
 
 def log_spectrum_power(frames, NFFT, norm=1):
-    '''计算每一帧的功率谱的对数形式
+    '''
+    计算每一帧的功率谱的对数形式
     参数说明：
     frames:帧矩阵，即audio2frame返回的矩阵
     NFFT：FFT变换的大小
@@ -105,7 +110,8 @@ def log_spectrum_power(frames, NFFT, norm=1):
 
 
 def pre_emphasis(signal, coefficient=0.95):
-    '''对信号进行预加重
+    '''
+    对信号进行预加重
     参数含义：
     signal:原始信号
     coefficient:加重系数，默认为0.95

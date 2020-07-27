@@ -10,7 +10,7 @@ from pydub import AudioSegment
 # 1秒=1000毫秒
 SECOND = 1000
 # 音乐文件
-AUDIO_PATH = 'music/original/edf69476c8d6d8c045914add64decb85.mp3'
+AUDIO_PATH = '../../music/original/1.mp3'
 
 
 def split_music(begin, end, filepath):
@@ -26,17 +26,18 @@ def split_music(begin, end, filepath):
 
     return temp_path
 
+if __name__ == '__main__':
+    music, sr = librosa.load(split_music(0, 1, AUDIO_PATH))
 
-music, sr = librosa.load(split_music(0, 1, AUDIO_PATH))
+    # 进一步放大，比如说0.9秒到1秒之间的频谱：
+    n0 = 9000
+    n1 = 10000
 
-# 进一步放大，比如说0.9秒到1秒之间的频谱：
-n0 = 9000
-n1 = 10000
-
-music = np.array([mic for mic in music if mic > 0])
-# 宽高比为14:5的图
-plt.figure(figsize=(14, 5))
-plt.plot(music[n0:n1])
-plt.grid()
-plt.show()
+    music = np.array([mic for mic in music if mic > 0])
+    # 宽高比为14:5的图
+    plt.figure(figsize=(14, 5))
+    plt.plot(music)
+    # plt.plot(music[n0:n1])
+    plt.grid()
+    plt.show()
 

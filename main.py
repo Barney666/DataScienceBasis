@@ -93,12 +93,12 @@ if __name__ == '__main__':
 
         mfcc_feat=np.load("music/mfcc_backup/"+str(i+1)+".npy")   # 读取已经保存好的nparray
 
-        # 使用sklearn中的PCA
+        # # 使用sklearn中的PCA
         # pca = PCA(n_components=10)      # 降成10*39的矩阵
         # resize_matrix = pca.fit_transform(np.transpose(mfcc_feat))
         # resize_matrix = np.transpose(resize_matrix)
         # resize_matrix = resize_matrix.flatten()   # 再拉成一维
-
+        #
         # length=check_length(i+1)    # 第i个音频就是表中id为i+1的视频的bgm
         # if 0<=length<=10:
         #     first_length.append(resize_matrix)
@@ -118,10 +118,10 @@ if __name__ == '__main__':
         all_record.append(i + 1)
 
 
-    kmeans_labels, kmeans_cluster_centers_ = k_means(all_length,10)
-    # kmeans_labels, kmeans_cluster_centers_ = k_means(first_length,9)
+    # kmeans_labels, kmeans_cluster_centers_ = k_means(all_length,10)
+    kmeans_labels, kmeans_cluster_centers_ = k_means(first_length,9)
 
-    category(all_record,kmeans_labels)
+    # category(all_record,kmeans_labels)
 
 
 
