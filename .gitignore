@@ -5,3 +5,4 @@ music/wav/
 music/mfcc_backup/
 .DS_Store
 .idea/
+video/__pycache__/
